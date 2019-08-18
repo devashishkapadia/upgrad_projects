@@ -1,0 +1,32 @@
+This problem has be solved By using decaying window algorithum.
+==============================================================================================================================================
+Driver class-
+Driver class extended the configuration where all the job configuration was set.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+Mapper Class-
+In the mapper class, the file was split into an array of string from where songId, date and hours was
+extracted.
+After getting the date field, the date was further split into days. Thereafter, used an 'if statement' to
+write the data in the context write with respect to the days.
+The formula worked to fetch he data of 25th Dec. Here is the formula: if(days<=24){
+}
+This helped me in getting the data of the songs from 25th Dec onward.
+Then I followed the decaying window algorithm, to attach the weight of each songid as per the below
+logic.
+To get he window per day, I took the window size of 6 hours, hence the total number of window came
+out to be 24/6 = 4 windows.
+For the weight part, the weight increase on the basis of the day and hour, at which the song got played
+in the day + a constant value of 1.0.
+While writing in context.write, I have attached a partitioner identifier with the songid.
+Reference image attached for the explanation.
+---------------------------------------------------------------------------------------------------------------------
+Usin CUstom partitioner class 
+In the Partitioner.class, I have created a hashmap with string and integer value.
+String value contained the partitioning key E.g "25". 
+---------------------------------------------------------------------------------------------------------------------------
+Reducer class 
+In the reduce the key was separated from the identifier and the weight of the song was sum together
+with respect to the key.
+and the value was put in a hashmap.
+===================================================================================================================================
